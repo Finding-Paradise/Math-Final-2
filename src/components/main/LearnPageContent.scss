@@ -10,10 +10,6 @@ $primaryColor: #452A80;
 .accordion {
     margin-top: 1.5em;
     .accordion-button {
-        // display: flex;
-        // flex-direction: column;
-        // align-items: flex-start;
-        // justify-content: center;
         background-color: #fff;
         &:focus {
             border-color: #eee2ff;

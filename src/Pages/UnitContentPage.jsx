@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './UnitContentPage.scss'
 import { useParams } from 'react-router'
-import Latex from 'react-latex-next';
 
 function UnitContentPage() {
 

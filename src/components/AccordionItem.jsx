@@ -12,7 +12,6 @@ function AccordionItem(props) {
             <h2 className="accordion-header" id={props.h2Id}>
                 <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={props.databstarget} aria-expanded="true" aria-controls={props.divId}>
                     <h2 className='accordion--heading'>{props.topic}</h2>
-                    {/* <h5 className='accordion--subheading'>Линейное уравнение</h5> */}
                 </button>
             </h2>
             <div id={props.divId} className="accordion-collapse collapse" aria-labelledby={props.h2Id} data-bs-parent="#accordionExample">
