@@ -24,8 +24,9 @@ export const ProjectContextProvider = ({ children }) => {
     }, [currentBookIdAndName.id])
 
     const bookNamesArray = bookObjectsArray.map(item => {
-        return <option key={item._id} onClick={() => setCurrentBookIdAndName({ id: item._id, name: item.name })}>{item.name}</option>
+        return <li key={item._id} onClick={() => setCurrentBookIdAndName({ id: item._id, name: item.name })} class="dropDown-bookName">{item.name}</li>
     })
+
 
     let currentBookTopics = [];
     if (typeof currentBookObject.topics != 'undefined') {
