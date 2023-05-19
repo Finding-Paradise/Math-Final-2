@@ -35,7 +35,7 @@ function NavbarMin() {
 
         <div className="dropDown-wrapper">
           <input
-            readonly
+            readOnly
             id="input"
             type="text"
             value="Китептер"
