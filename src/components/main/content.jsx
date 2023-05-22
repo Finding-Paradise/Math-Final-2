@@ -1,4 +1,4 @@
-import './content.css'
+import './content.scss'
 import block1img from '../../img/girl.png'
 import block2img from '../../img/hand.png'
 import block3img from '../../img/check.png'
