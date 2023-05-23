@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './UnitContentPage.scss'
 import { useParams } from 'react-router'
+import { MathJax } from 'better-react-mathjax'
 
 function UnitContentPage() {
 
@@ -30,7 +31,8 @@ function UnitContentPage() {
                 {/* <Latex style={{ "textAlign": "justify" }} delimiters={[
                     { left: '$', right: '$', display: true },
                 ]}>{UnitContentLatex}</Latex> */}
-                <p>{UnitContentLatex}</p>
+                
+                <MathJax>{UnitContentLatex}</MathJax>
             </div>
         </>
     )
