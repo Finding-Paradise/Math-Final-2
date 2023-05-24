@@ -20,19 +20,19 @@ function UnitContentPage() {
     return (
         <>
             <header className="unitContentPage--header">
-                <div className="container unitContentPage--container">
+                <div className="container unitContentPage--header-container">
                     <h1>Сана</h1>
                 </div>
             </header>
 
-            <div className="container">
-                <h1 style={{ "textAlign": "center", "margin": "1em 0" }}>{UnitContentHeading}</h1>
+            <div className="container unitContentPage--container">
+                <h1>{UnitContentHeading}</h1>
 
                 {/* <Latex style={{ "textAlign": "justify" }} delimiters={[
                     { left: '$', right: '$', display: true },
                 ]}>{UnitContentLatex}</Latex> */}
                 
-                <MathJax>{UnitContentLatex}</MathJax>
+                <MathJax dangerouslySetInnerHTML={{__html: UnitContentLatex}}></MathJax>
             </div>
         </>
     )
