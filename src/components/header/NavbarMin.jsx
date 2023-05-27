@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./NavbarMin.scss";
 import { ProjectContext } from "../../Context/ProjectContext";
+import { Link } from "react-router-dom";
 
 function NavbarMin() {
   const { bookNamesArray } = useContext(ProjectContext);
@@ -49,7 +50,7 @@ function NavbarMin() {
             </ul>
           </div>
         </div>
-        <h1 className="navbar--heading">Сана</h1>
+        <h1 className="navbar--heading"><Link to={'/'}>Сана</Link></h1>
       </div>
     </div>
   );
