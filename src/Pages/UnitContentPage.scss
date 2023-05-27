@@ -24,4 +24,9 @@ $primaryColor: #452A80;
         margin: 1em 0;
         font-size: 2em;
     }
+    span {
+        img {
+            max-width: 100%;
+        }
+    }
 }
