@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './UnitContentPage.scss'
 import { useParams } from 'react-router'
 import { MathJax } from 'better-react-mathjax'
+import { Link } from 'react-router-dom'
 
 function UnitContentPage() {
 
@@ -21,7 +22,7 @@ function UnitContentPage() {
         <>
             <header className="unitContentPage--header">
                 <div className="container unitContentPage--header-container">
-                    <h1>Сана</h1>
+                    <h1><Link to={'/'}>Сана</Link></h1>
                 </div>
             </header>
 
