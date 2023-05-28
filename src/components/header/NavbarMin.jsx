@@ -6,54 +6,65 @@ import { Link } from "react-router-dom";
 function NavbarMin() {
   const { bookNamesArray } = useContext(ProjectContext);
   const [showSelectives, setShowSelectives] = useState(false);
-  let styles = {
-    display: showSelectives ? "block" : "none",
+  const [inputFocused, setInputFocused] = useState(false);
+
+  const handleDropdownClick = () => {
+    setShowSelectives((prevState) => !prevState);
   };
 
-  let styles2 = {
-    borderRadius: showSelectives ? "6px 6px 0px 0px" : "6px",
+  const handleTopicSelect = () => {
+    setShowSelectives(false);
   };
 
-  // const handleBlur = (e) => setShowSelectives(false);
+  const handleInputFocus = () => {
+    setInputFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    setInputFocused(false);
+  };
 
   return (
     <div className="navbar">
       <div className="container">
-        {/* <select
-          className="form-select"
-          aria-label="Default select example"
-          onClick={() => {
-            if (typeof (selectedIndex) != "undefined") {
-              check();
-            } else {
-              console.log('error')
-            }
-          }}
-        >
-          <option defaultValue>Китептер</option>
-          {bookNamesArray}
-        </select> */}
-
         <div className="dropDown-wrapper">
           <input
             readOnly
             id="input"
             type="text"
             value="Китептер"
-            onClick={() => setShowSelectives((prevState) => !prevState)}
-            // onBlur={handleBlur}
-            style={styles2}
-          ></input>
-          <div id="selectives" style={styles}>
+            className={inputFocused ? "input-focused" : ""}
+            onClick={handleDropdownClick}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+          />
+          <div
+            id="selectives"
+            className={`selectives ${showSelectives ? "show" : ""}`}
+          >
             <ul>
-              {bookNamesArray}
+              {bookNamesArray.map((item) => (
+                <li
+                  key={item.key}
+                  onClick={() => {
+                    handleTopicSelect();
+                    item.props.onClick();
+                  }}
+                  className="dropDown-bookName"
+                >
+                  {item.props.children}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        <h1 className="navbar--heading"><Link to={'/'}>Сана</Link></h1>
+        <h1 className="navbar--heading">
+          <Link to={"/"}>Сана</Link>
+        </h1>
       </div>
     </div>
   );
 }
 
 export default NavbarMin;
+

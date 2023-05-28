@@ -1,43 +1,43 @@
-import { createContext, useState, useEffect } from "react";
+    import { createContext, useState, useEffect } from "react";
 
-export const ProjectContext = createContext()
+    export const ProjectContext = createContext()
 
-export const ProjectContextProvider = ({ children }) => {
+    export const ProjectContextProvider = ({ children }) => {
 
-    const [bookObjectsArray, setBookObjectsArray] = useState([])
-    const [currentBookIdAndName, setCurrentBookIdAndName] = useState({
-        id: "",
-        name: ""
-    })
-    const [currentBookObject, setCurrentBookObject] = useState({})
-
-    useEffect(() => {
-        fetch("https://math-a1n7.onrender.com/grades")
-            .then(res => res.json())
-            .then(data => setBookObjectsArray(data));
-    }, []);
-
-    useEffect(() => {
-        fetch(`https://math-a1n7.onrender.com/grades/${currentBookIdAndName.id}`)
-            .then(res => res.json())
-            .then(data => setCurrentBookObject(data));
-    }, [currentBookIdAndName.id])
-
-    const bookNamesArray = bookObjectsArray.map(item => {
-        return <li key={item._id} onClick={() => setCurrentBookIdAndName({ id: item._id, name: item.name })} className="dropDown-bookName">{item.name}</li>
-    })
-
-
-    let currentBookTopics = [];
-    if (typeof currentBookObject.topics != 'undefined') {
-        currentBookTopics = currentBookObject.topics.map(item => {
-            return item
+        const [bookObjectsArray, setBookObjectsArray] = useState([])
+        const [currentBookIdAndName, setCurrentBookIdAndName] = useState({
+            id: "",
+            name: ""
         })
-    }
+        const [currentBookObject, setCurrentBookObject] = useState({})
 
-    return (
-        <ProjectContext.Provider value={{ bookNamesArray, currentBookIdAndName, currentBookTopics }}>
-            {children}
-        </ProjectContext.Provider>
-    )
-}
+        useEffect(() => {
+            fetch("https://math-a1n7.onrender.com/grades")
+                .then(res => res.json())
+                .then(data => setBookObjectsArray(data));
+        }, []);
+
+        useEffect(() => {
+            fetch(`https://math-a1n7.onrender.com/grades/${currentBookIdAndName.id}`)
+                .then(res => res.json())
+                .then(data => setCurrentBookObject(data));
+        }, [currentBookIdAndName.id])
+
+        const bookNamesArray = bookObjectsArray.map(item => {
+            return <li key={item._id} onClick={() => setCurrentBookIdAndName({ id: item._id, name: item.name })} className="dropDown-bookName">{item.name}</li>
+        })
+
+
+        let currentBookTopics = [];
+        if (typeof currentBookObject.topics != 'undefined') {
+            currentBookTopics = currentBookObject.topics.map(item => {
+                return item
+            })
+        }
+
+        return (
+            <ProjectContext.Provider value={{ bookNamesArray, currentBookIdAndName, currentBookTopics }}>
+                {children}
+            </ProjectContext.Provider>
+        )
+    }
